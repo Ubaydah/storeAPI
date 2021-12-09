@@ -12,12 +12,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-    date_joined = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(default=timezone.now)
     firstname = models.CharField(max_length=250, null=True)
     lastname = models.CharField(max_length=250, null=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['firstname', 'lastname', 'created_at']
 
     objects = CustomUserManager()
 
