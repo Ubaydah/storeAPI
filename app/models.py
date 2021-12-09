@@ -30,6 +30,10 @@ class Wallet(models.Model):
     currency = models.CharField(max_length=100, default=True)
     created_at = models.DateTimeField(default=timezone.now, null=True)
 
+    def __str__(self):
+
+        return self.user.__str__()
+
 class BankAccount(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -48,6 +52,10 @@ class Store(models.Model):
     owner_id_document = models.FileField(upload_to=None, max_length=254)
     created_at = models.DateTimeField(default=timezone.now, null=True)
 
+    def __str__(self):
+
+        return self.name
+
 class Product(models.Model):
     
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
@@ -55,6 +63,10 @@ class Product(models.Model):
     description = models.TextField(max_length=300, default=True)
     price = models.DecimalField(max_digits=100, decimal_places=2)
     created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+
+        return self.name
 
 
 class Transactions(models.Model):
@@ -70,3 +82,6 @@ class Transactions(models.Model):
     description = models.TextField(max_length=300)
     timestamp = models.DateTimeField(default=timezone.now)
     transaction_type = models.CharField(max_length=200, null=True, choices=TRANSACION_TYPES)
+
+    def __str__(self):
+        return self.wallet.user.__str__()
