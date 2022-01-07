@@ -5,3 +5,7 @@
 __pycache__
 db.sqlite3
 media
+
+# dotenv environment variables file
+.env
+.env.test
