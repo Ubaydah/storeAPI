@@ -32,7 +32,7 @@ class Wallet(models.Model):
 
     def __str__(self):
 
-        return self.user.__str__()
+        return self.user.__str__ ()
 
 class BankAccount(models.Model):
 
@@ -48,8 +48,8 @@ class Store(models.Model):
     name = models.CharField(max_length=250, default=True)
     description = models.TextField(max_length=300, default=True)
     currency = models.CharField(max_length=250)
-    can_document = models.FileField(upload_to=None, max_length=254)
-    owner_id_document = models.FileField(upload_to=None, max_length=254)
+    can_document = models.FileField(upload_to=None, max_length=254, blank=True)
+    owner_id_document = models.FileField(upload_to=None, max_length=254, blank=True)
     created_at = models.DateTimeField(default=timezone.now, null=True)
 
     def __str__(self):
